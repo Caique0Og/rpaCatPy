@@ -11,7 +11,7 @@ def buscar_piadas():
         resposta = requests.get("https://api.chucknorris.io/jokes/random")
         if resposta.ok:
             dados = resposta.json()
-            piadas[dados["id"]] = dados["value"]  # evita duplicatas pelo id
+            piadas[dados["id"]] = dados["value"]  
     return [{"id": k, "texto": v} for k, v in piadas.items()]
 
 # 2. Salva no banco de dados
@@ -47,7 +47,7 @@ def analisar_piadas(conexao):
 def enviar_email(assunto, mensagem):
     remetente = "cayqtoky@gmail.com"
     destinatario = "caique.diniz@aluno.faculdadeimpacta.com.br"
-    senha = "cgpnnrvhzyksixol"  # Recomendo usar senha de app para Gmail
+    senha = "cgpnnrvhzyksixol"  
     
     msg = MIMEText(mensagem, 'plain', 'utf-8')
     msg['From'] = remetente
@@ -63,7 +63,7 @@ def enviar_email(assunto, mensagem):
     except Exception as e:
         print("Erro ao enviar e-mail:", e)
 
-# Execução principal
+
 if __name__ == "__main__":
     # Busca e salva piadas
     piadas = buscar_piadas()
